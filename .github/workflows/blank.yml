@@ -21,7 +21,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: |
-        echo "added a new line!" > README.md
+        echo "added a new line!" >> README.md
         git add README.md
         git remote set-url origin https://peterjgrainger:${{ secrets.GITHUB_TOKEN }}@github.com/peterjgrainger/test-push-github.git
         git push origin
