@@ -23,5 +23,6 @@ jobs:
       run: |
         echo "added a new line!" >> README.md
         git add README.md
+        git commit -m "tested commiting via actions"
         git remote set-url origin https://peterjgrainger:${{ secrets.GITHUB_TOKEN }}@github.com/peterjgrainger/test-push-github.git
-        git push origin
+        git push
