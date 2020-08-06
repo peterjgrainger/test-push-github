@@ -17,14 +17,19 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: oleksiyrudenko/gha-git-credentials@v1
+      with:
+        name: 'GitHub Bot'
+        email: 'bot@github.com'
+        actor: '${{ github.actor }}'
+        token: '${{ secrets.GITHUB_TOKEN }}'
+    
+    
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: |
         echo "added a new line!" >> README.md
-        git config --global user.email "peter@grainger.xyz"
-        git config --global user.name "Peter Grainger"
         git add README.md
         git commit -m "tested commiting via actions"
-        git remote set-url origin https://peterjgrainger:${{ secrets.GITHUB_TOKEN }}@github.com/peterjgrainger/test-push-github.git
         git push
